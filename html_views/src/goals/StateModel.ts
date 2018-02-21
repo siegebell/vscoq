@@ -164,7 +164,7 @@ class StateModel {
   // private static hypothesesNodeClass = '.hypotheses';
   // private static goalNodeClass = '.goal';
   // private static focusedStateClass = '.focusedState';
-  private focusedState = 0;
+  // private focusedState = 0;
   // private coqState : ProofView;
 
 
@@ -190,19 +190,19 @@ class StateModel {
   public updateState(state: CommandResult) {
     try {
       hasSubstitutions = false;
-      this.focusedState = 0;
+      // this.focusedState = 0;
       this.clearErrorMessage();
       $('#stdout').text('');
 
       if(state.type === 'failure')
         this.setErrorMessage(state.message);
-      else if(state.type === 'not-running') 
+      else if(state.type === 'not-running')
         this.setMessage('Not running.');
       else if(state.type === 'no-proof')
         this.setMessage('Not in proof mode.');
       else if(state.type === 'interrupted')
         this.setMessage("Interrupted.");
-      else if(state.type === 'proof-view') { 
+      else if(state.type === 'proof-view') {
         if (countAllGoals(state) == 0) {
           $('#states').empty();
           this.setMessage("No more subgoals.");

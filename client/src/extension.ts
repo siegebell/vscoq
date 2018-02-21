@@ -54,26 +54,26 @@ export function activate(context: ExtensionContext) {
   regTCmd('query.locate', locate);
   regTCmd('query.search', search);
   regTCmd('query.about', about);
-  regTCmd('query.searchAbout', searchAbout); 
-  regTCmd('query.print', print); 
+  regTCmd('query.searchAbout', searchAbout);
+  regTCmd('query.print', print);
   regTCmd('query.prompt.check', queryCheck);
   regTCmd('query.prompt.locate', queryLocate);
   regTCmd('query.prompt.search', querySearch);
   regTCmd('query.prompt.about', queryAbout);
-  regTCmd('query.prompt.searchAbout', querySearchAbout); 
+  regTCmd('query.prompt.searchAbout', querySearchAbout);
   regTCmd('query.prompt.print', queryPrint);
-  regTCmd('proofView.viewStateAt', viewProofStateAt); 
-  regTCmd('proofView.open', viewCurrentProofState); 
+  regTCmd('proofView.viewStateAt', viewProofStateAt);
+  regTCmd('proofView.open', viewCurrentProofState);
   regTCmd('proofView.openExternal', viewProofStateExternal);
   regCmd('proofView.customizeProofViewStyle', customizeProofViewStyle);
   regProjectCmd('ltacProf.getResults', project.ltacProfGetResults);
-  regCmd('display.toggle.implicitArguments', () => project.setDisplayOption(proto.DisplayOption.ImplicitArguments, proto.SetDisplayOption.Toggle)); 
-  regCmd('display.toggle.coercions', () => project.setDisplayOption(proto.DisplayOption.Coercions, proto.SetDisplayOption.Toggle)); 
-  regCmd('display.toggle.rawMatchingExpressions', () => project.setDisplayOption(proto.DisplayOption.RawMatchingExpressions, proto.SetDisplayOption.Toggle)); 
-  regCmd('display.toggle.notations', () => project.setDisplayOption(proto.DisplayOption.Notations, proto.SetDisplayOption.Toggle)); 
-  regCmd('display.toggle.allBasicLowLevelContents', () => project.setDisplayOption(proto.DisplayOption.AllBasicLowLevelContents, proto.SetDisplayOption.Toggle)); 
-  regCmd('display.toggle.existentialVariableInstances', () => project.setDisplayOption(proto.DisplayOption.ExistentialVariableInstances, proto.SetDisplayOption.Toggle)); 
-  regCmd('display.toggle.universeLevels', () => project.setDisplayOption(proto.DisplayOption.UniverseLevels, proto.SetDisplayOption.Toggle)); 
+  regCmd('display.toggle.implicitArguments', () => project.setDisplayOption(proto.DisplayOption.ImplicitArguments, proto.SetDisplayOption.Toggle));
+  regCmd('display.toggle.coercions', () => project.setDisplayOption(proto.DisplayOption.Coercions, proto.SetDisplayOption.Toggle));
+  regCmd('display.toggle.rawMatchingExpressions', () => project.setDisplayOption(proto.DisplayOption.RawMatchingExpressions, proto.SetDisplayOption.Toggle));
+  regCmd('display.toggle.notations', () => project.setDisplayOption(proto.DisplayOption.Notations, proto.SetDisplayOption.Toggle));
+  regCmd('display.toggle.allBasicLowLevelContents', () => project.setDisplayOption(proto.DisplayOption.AllBasicLowLevelContents, proto.SetDisplayOption.Toggle));
+  regCmd('display.toggle.existentialVariableInstances', () => project.setDisplayOption(proto.DisplayOption.ExistentialVariableInstances, proto.SetDisplayOption.Toggle));
+  regCmd('display.toggle.universeLevels', () => project.setDisplayOption(proto.DisplayOption.UniverseLevels, proto.SetDisplayOption.Toggle));
   regCmd('display.toggle.allLowLevelContents', () => project.setDisplayOption(proto.DisplayOption.AllLowLevelContents, proto.SetDisplayOption.Toggle));
   regCmd('display.toggle', () => project.setDisplayOption());
 
@@ -112,76 +112,68 @@ async function queryStringFromPosition(prompt: string, editor: TextEditor) {
     return query;
 }
 
+function queryGenericPlaceholder(editor: TextEditor, edit: TextEditorEdit, command: string, uiString: string) {
+  return withDocAsync(editor, async (doc) => {
+    const queryString = await queryStringFromPlaceholder(`${uiString}:`, editor);
+    if (queryString)
+      doc.query(command as proto.QueryFunction, queryString);
+  });
+}
+
+function queryGenericPosition(editor: TextEditor, edit: TextEditorEdit, command: string, uiString: string) {
+  return withDocAsync(editor, async (doc) => {
+    const queryString = await queryStringFromPosition(`${uiString}:`, editor);
+    if (queryString)
+      doc.query(command as proto.QueryFunction, queryString);
+  });
+}
+
 function queryCheck(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("check",await queryStringFromPlaceholder("Check:", editor))
-  )
+  queryGenericPlaceholder(editor, edit, "check", "Check");
 }
 
 function queryLocate(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("locate", await queryStringFromPlaceholder("Locate:", editor))
-  )
+  queryGenericPlaceholder(editor, edit, "locate", "Locate");
 }
 
 function querySearch(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("search", await queryStringFromPlaceholder("Search:", editor))
-  )
+  queryGenericPlaceholder(editor, edit, "search", "Search");
 }
 
 function queryAbout(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("about", await queryStringFromPlaceholder("Search:", editor))
-  )
+  queryGenericPlaceholder(editor, edit, "about", "About");
 }
 
 function querySearchAbout(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("searchAbout", await queryStringFromPlaceholder("Search About:", editor))
-  )
+  queryGenericPlaceholder(editor, edit, "searchAbout", "Search About");
 }
 
 function queryPrint(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("print", await queryStringFromPlaceholder("Print:", editor))
-  )
+  queryGenericPlaceholder(editor, edit, "print", "Print");
 }
 
 function check(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("check", await queryStringFromPosition("Check:", editor))
-  )
+  queryGenericPosition(editor, edit, "check", "Check");
 }
 
 function locate(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("locate", await queryStringFromPosition("Locate:", editor))
-  )
+  queryGenericPosition(editor, edit, "locate", "Locate");
 }
 
 function search(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("search", await queryStringFromPosition("Search:", editor))
-  )
+  queryGenericPosition(editor, edit, "search", "Search");
 }
 
 function about(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("about", await queryStringFromPosition("Search:", editor))
-  )
+  queryGenericPosition(editor, edit, "about", "About");
 }
 
 function searchAbout(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("searchAbout",await queryStringFromPosition("Search About:", editor))
-  )
+  queryGenericPosition(editor, edit, "searchAbout", "Search About");
 }
 
 function print(editor: TextEditor, edit: TextEditorEdit) {
-  return withDocAsync(editor, async (doc) =>
-    doc.query("print", await queryStringFromPosition("Search About:", editor))
-  )
+  queryGenericPosition(editor, edit, "print", "Print");
 }
 
 function viewProofStateAt(editor: TextEditor, edit: TextEditorEdit) {

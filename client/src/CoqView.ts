@@ -44,10 +44,12 @@ export function countAllGoals(state: proto.CommandResult): number {
 
 export function adjacentPane(pane: vscode.ViewColumn) : vscode.ViewColumn {
   switch (pane) {
-  case vscode.ViewColumn.One: return vscode.ViewColumn.Two
+  case vscode.ViewColumn.One: return vscode.ViewColumn.Two;
   case vscode.ViewColumn.Two: return vscode.ViewColumn.Three;
   case vscode.ViewColumn.Three: return vscode.ViewColumn.Two;
   }
+  // Add a default to keep the typechecker happy
+  return vscode.ViewColumn.Two;
 }
 
 export interface CoqView extends vscode.Disposable {
