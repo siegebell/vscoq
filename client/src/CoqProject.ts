@@ -33,7 +33,8 @@ export class CoqProject implements vscode.Disposable {
   private constructor(context: vscode.ExtensionContext) {
     this.langServer = CoqLanguageServer.create(context);
 
-    this.activeEditor = vscode.window.activeTextEditor;
+    if (vscode.window.activeTextEditor)
+      this.activeEditor = vscode.window.activeTextEditor;
 
     this.loadConfiguration();
     this.subscriptions.push(vscode.workspace.onDidChangeConfiguration((e) => {
@@ -115,7 +116,7 @@ export class CoqProject implements vscode.Disposable {
     }
 
     // refresh this in case the loaded document has focus and it was not in our registry
-    if(this.documents.has(vscode.window.activeTextEditor.document.uri.toString()))
+    if(vscode.window.activeTextEditor && this.documents.has(vscode.window.activeTextEditor.document.uri.toString()))
       this.activeDoc = this.documents.get(vscode.window.activeTextEditor.document.uri.toString()) || null;
   }
 
@@ -150,7 +151,7 @@ export class CoqProject implements vscode.Disposable {
     this.activeDoc = this.documents.get(doc.toString()) || null;
   }
 
-  private onDidChangeActiveTextEditor(editor: vscode.TextEditor) {
+  private onDidChangeActiveTextEditor(editor: vscode.TextEditor|undefined) {
     if(!this.activeEditor)
       return;
     let oldUri : string|null;

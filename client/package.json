@@ -11,7 +11,7 @@
   "publisher": "siegebell",
   "license": "MIT",
 	"engines": {
- 		"vscode": "^1.7.0"
+ 		"vscode": "^1.20.1"
 	},
 	"categories": [
 		"Languages"
@@ -160,13 +160,13 @@
       {"command": "extension.coq.query.locate", "title": "Locate", "description": "Locate the term at the cursor", "category": "Coq"},
       {"command": "extension.coq.query.search", "title": "Search", "description": "Search for the term pattern at the cursor", "category": "Coq"},
       {"command": "extension.coq.query.print", "title": "Print", "description": "Print the definition of the term at the cursor", "category": "Coq"},
-      {"command": "extension.coq.query.about", "title": "About", "description": "About the term pattern at the cursor", "category": "Coq"}, 
-      {"command": "extension.coq.query.searchAbout", "title": "SearchAbout", "description": "SearchAbout the term pattern at the cursor", "category": "Coq"}, 
+      {"command": "extension.coq.query.about", "title": "About", "description": "About the term pattern at the cursor", "category": "Coq"},
+      {"command": "extension.coq.query.searchAbout", "title": "SearchAbout", "description": "SearchAbout the term pattern at the cursor", "category": "Coq"},
       {"command": "extension.coq.query.prompt.check", "title": "Prompt Check", "description": "Check the type of a term", "category": "Coq"},
       {"command": "extension.coq.query.prompt.locate", "title": "Prompt Locate", "description": "Locate a term", "category": "Coq"},
-      {"command": "extension.coq.query.prompt.about", "title": "Prompt About", "description": "About a term", "category": "Coq"}, 
+      {"command": "extension.coq.query.prompt.about", "title": "Prompt About", "description": "About a term", "category": "Coq"},
       {"command": "extension.coq.query.prompt.search", "title": "Prompt Search", "description": "Search for a term", "category": "Coq"},
-      {"command": "extension.coq.query.prompt.searchAbout", "title": "Prompt SearchAbout", "description": "SearchAbout a term", "category": "Coq"}, 
+      {"command": "extension.coq.query.prompt.searchAbout", "title": "Prompt SearchAbout", "description": "SearchAbout a term", "category": "Coq"},
       {"command": "extension.coq.query.prompt.print", "title": "Prompt Print", "description": "Print the definition of a term", "category": "Coq"},
       {"command": "extension.coq.display.toggle", "title": "Display options", "category": "Coq"},
       {"command": "extension.coq.display.toggle.implicitArguments", "title": "Display Implicit Arguments", "category": "Coq"},
@@ -241,8 +241,8 @@
             "language": "coq",
             "path": "./snippets/coq.json"
         }
-    ]    
-	},	
+    ]
+	},
 	"scripts": {
 		"vscode:prepublish": "npm run cp-coqtopw && npm run compile-server && npm run compile-html-view && npm run compile",
     "cp-coqtopw": "copyfiles -f ../coqtopw/bin/Release/coqtopw.exe ./",
