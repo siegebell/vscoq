@@ -40,7 +40,7 @@ function computePrintingWidth() {
       widthChars = 1;
     widthChars = Math.max(widthChars,5);
     $('#measureTest').text("<" + "-".repeat(widthChars-2) + ">")
-    if(connection)
+    if(connection && connection.readyState === 1)
       connection.send(JSON.stringify(<ControllerEvent>{
         eventName: 'resize',
         params: <ResizeEvent>{columns: widthChars}
