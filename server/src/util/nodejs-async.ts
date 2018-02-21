@@ -32,8 +32,9 @@ export namespace fs {
   export function readFile(filename: string, options: {flag?:string}) : Promise<Buffer>;
   export function readFile(filename: string, options: {encoding: string, flag?:string}) : Promise<string>;
   export function readFile(filename: string, options?: string|{encoding?:string, flag?:string}) : Promise<Buffer|string> {
+    const opts = typeof options === 'string' ? {encoding: options} : options;
     return new Promise<Buffer|string>((resolve,reject) => {
-      nfs.readFile(filename, options, (err,data) => {
+      nfs.readFile(filename, opts, (err,data) => {
         if(err)
           reject(err);
         else
