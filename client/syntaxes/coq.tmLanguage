@@ -45,7 +45,7 @@
 
         <dict>
             <key>match</key>
-            <string>(Lemma|Theorem|Goal|Example|Corollary)\s+([a-zA-Zα-ωΑ-Ωɛφςϱ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱ]*)</string>
+            <string>(Lemma|Theorem|Goal|Example|Corollary)\s+([a-zA-Zα-ωΑ-Ωɛφςϱϰ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱϰ]*)</string>
             <key>comment</key>
             <string>Theorem declarations</string>
             <key>captures</key>
@@ -74,7 +74,7 @@
 
         <dict>
             <key>match</key>
-            <string>(Program Definition|Program Fixpoint|Program CoFixpoint|Program Function|Function|CoFixpoint|Fixpoint|Definition|Let)\s+([a-zA-Z_α-ωΑ-Ωɛφςϱ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱ]*)</string>
+            <string>(Program Definition|Program Fixpoint|Program CoFixpoint|Program Function|Function|CoFixpoint|Fixpoint|Definition|Let)\s+([a-zA-Z_α-ωΑ-Ωɛφςϱϰ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱϰ]*)</string>
             <key>comment</key>
             <string>Definitions</string>
             <key>captures</key>
@@ -94,7 +94,7 @@
 
         <dict>
             <key>match</key>
-            <string>(CoInductive|Inductive)\s+([a-zA-Zα-ωΑ-Ωɛφςϱ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱ]*)</string>
+            <string>(CoInductive|Inductive)\s+([a-zA-Zα-ωΑ-Ωɛφςϱϰ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱϰ]*)</string>
             <key>comment</key>
             <string>Inductive type declarations</string>
             <key>captures</key>
@@ -114,7 +114,7 @@
 
         <dict>
             <key>match</key>
-            <string>(Ltac)\s+([a-zA-Zα-ωΑ-Ωɛφςϱ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱ]*)</string>
+            <string>(Ltac)\s+([a-zA-Zα-ωΑ-Ωɛφςϱϰ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱϰ]*)</string>
             <key>comment</key>
             <string>Ltac declarations</string>
             <key>captures</key>
