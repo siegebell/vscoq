@@ -188,7 +188,7 @@
 
         <dict>
             <key>match</key>
-            <string>\b(into|with|eqn|by|as|using)\b</string>
+            <string>\b(into|with|eqn|by|as|using|return)\b</string>
             <key>comment</key>
             <string>Common Ltac connectors</string>
             <key>name</key>
