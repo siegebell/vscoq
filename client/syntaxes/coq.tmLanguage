@@ -206,7 +206,7 @@
 
         <dict>
             <key>match</key>
-            <string>\b(intro|intros|induction|destruct|auto|eauto|eassumption|apply|eapply|assumption|constructor|econstructor|reflexivity|inversion|assert|split|omega|fold|unfold|specialize|rewrite|erewrite|symmetry|refine|simpl|cbn|intuition|firstorder|generalize|idtac|exist|exists|eexists|elim|eelim|rename|subst|congruence|trivial|left|right|pose|discriminate|clear|clearbody|contradict|contradiction|exact|dependent|remember|revert|replace|cycle|swap|revgoals|pattern|transitivity)\b</string>
+            <string>\b(intro|intros|induction|destruct|auto|eauto|eassumption|apply|eapply|assumption|constructor|econstructor|reflexivity|inversion|assert|split|omega|fold|unfold|specialize|rewrite|erewrite|symmetry|refine|simpl|cbn|intuition|firstorder|generalize|idtac|exist|exists|eexists|elim|eelim|rename|subst|congruence|trivial|left|right|pose|discriminate|clear|clearbody|contradict|contradiction|exact|dependent|remember|revert|replace|cycle|swap|revgoals|pattern|transitivity|absurd)\b</string>
             <key>comment</key>
             <string>Ltac builtins</string>
             <key>name</key>
