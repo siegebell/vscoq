@@ -74,7 +74,7 @@
 
         <dict>
             <key>match</key>
-            <string>(Program Definition|Program Fixpoint|Program CoFixpoint|Program Function|Function|CoFixpoint|Fixpoint|Definition|Let|Universe)\s+([a-zA-Z_α-ωΑ-Ωɛφςϱϰ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱϰ]*)</string>
+            <string>(Program Definition|Program Fixpoint|Program CoFixpoint|Program Function|Function|CoFixpoint|Fixpoint|Definition|Let|Universe|Scheme)\s+([a-zA-Z_α-ωΑ-Ωɛφςϱϰ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱϰ]*)</string>
             <key>comment</key>
             <string>Definitions</string>
             <key>captures</key>
@@ -90,6 +90,15 @@
                     <string>entity.name.function.coq</string>
                 </dict>
             </dict>
+        </dict>
+        
+        <dict>
+            <key>match</key>
+            <string>\b(Sort|Induction|Minimality|Equality)\b</string>
+            <key>comment</key>
+            <string>Scheme methods</string>
+            <key>name</key>
+            <string>keyword.source.coq</string>
         </dict>
 
         <dict>
