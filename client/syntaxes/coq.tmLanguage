@@ -74,7 +74,7 @@
 
         <dict>
             <key>match</key>
-            <string>(Program Definition|Program Fixpoint|Program CoFixpoint|Program Function|Function|CoFixpoint|Fixpoint|Definition|Let|Universe|Scheme)\s+([a-zA-Z_α-ωΑ-Ωɛφςϱϰ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱϰ]*)</string>
+            <string>(Program Definition|Program Fixpoint|Program CoFixpoint|Program Function|Function|CoFixpoint|Fixpoint|Definition|Variable|Let|Universe|Scheme)\s+([a-zA-Z_α-ωΑ-Ωɛφςϱϰ][a-zA-Z0-9_'α-ωΑ-Ωɛφςϱϰ]*)</string>
             <key>comment</key>
             <string>Definitions</string>
             <key>captures</key>
